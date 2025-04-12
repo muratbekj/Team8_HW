@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>{{ user.username }}'s Profile</h2>
+<p>Email: {{ user.email }}</p>
+<p>Diet Preference: {{ user.diet_preference }}</p>
+<a href="{% url 'user_edit' %}">Edit Profile</a>
+<a href="{% url 'logout' %}">Logout</a>
+
+
+{% endblock content %}
