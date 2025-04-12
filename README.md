@@ -1,7 +1,7 @@
 # Healthy Recipe & Meal Planner
 
 🧾 Overview
-Healthy Recipe & Meal Planner is a Django-based web application designed to help users plan nutritious meals and discover healthy recipes. It promotes balanced eating habits through a user-friendly interface for meal planning, recipe exploration, and shopping list generation.
+Healthy Recipe & Meal Planner is a Django-based web application designed to help users plan nutritious meals and discover healthy recipes. It promotes balanced eating habits through a user-friendly interface for meal planning and recipe exploration.
 
 🚀 Features
 🔍 Recipe Search – Find recipes based on ingredients, dietary preferences, and meal types.
