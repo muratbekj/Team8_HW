@@ -1,11 +1,10 @@
 {% extends "base.html" %}
 {% block content %}
-
-<h2>{{ user_obj.username }}'s Profile</h2>
-<p>Email: {{ user_obj.email }}</p>
-<p>Diet Preference: {{ user_obj.diet_preference }}</p>
-<a href="{% url 'user_edit' %}">Edit Profile</a>
-<a href="{% url 'user_delete' %}">Delete Profile</a>
-
-
+<div class="form-container">
+    <h2 class="form-title">{{ user_obj.username }}'s Profile</h2>
+    <p>Email: {{ user_obj.email }}</p>
+    <p>Diet Preference: {{ user_obj.diet_preference }}</p>
+    <a href="{% url 'user_edit' %}" class="form-button">Edit Profile</a>
+    <a href="{% url 'user_delete' %}" class="form-button delete-button">Delete Profile</a>
+</div>
 {% endblock content %}

@@ -36,7 +36,6 @@ class HomeView(ListView):
         # Fetch query parameters from the request
         search_query = self.request.GET.get('q', '')
         cuisine = self.request.GET.get('cuisine', '')
-        meal_type = self.request.GET.get('meal_type', '')
 
         # Fetch API key from environment variable
         API_KEY = open(self.api_key_file, 'r').read()
@@ -49,7 +48,6 @@ class HomeView(ListView):
             'apiKey': API_KEY,
             'query': search_query,
             'cuisine': cuisine,
-            'type': meal_type,
         }
 
         full_url = f"{url}?{urlencode(params)}"
@@ -77,6 +75,7 @@ class RecipeDetailView(DetailView):
         api_key = open('api_key_file', 'r').read()
 
         url = f'https://api.spoonacular.com/recipes/{recipe_id}/information'
+        instructions = f'https://api.spoonacular.com/recipes/{recipe_id}/analyzedInstructions'
         params = {'apiKey': api_key}
         
         response = requests.get(url, params=params)

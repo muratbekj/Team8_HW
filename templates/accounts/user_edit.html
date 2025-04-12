@@ -1,12 +1,11 @@
 {% block content %}
 {% extends "base.html" %}
-
-<h2>Edit Profile</h2>
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Update Profile</button>
-</form>
-
-
+<div class="form-container">
+    <h2 class="form-title">Edit Profile</h2>
+    <form method="post" class="form">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="form-button">Update Profile</button>
+    </form>
+</div>
 {% endblock content %}
