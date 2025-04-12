@@ -3,5 +3,38 @@
 
 <h1>Welcome to HealthyMealPlanner</h1>
 <p>Find healthy recipes, plan your meals, calculate nutritional information, and generate grocery lists.</p>
-
+<form method="GET" class="search-form">
+    <input type="text" name="q" placeholder="Search by name, cuisine, diet, type ..." value="{{ request.GET.q }}" class="search-input">
+    <select name="meal_type">
+        <option value="">Any Meal Type</option>
+        <option value="appetizer">Appetizer</option>
+        <option value="beverage">Beverage</option>
+        <option value="bread">Bread</option>
+        <option value="breakfast">Breakfast</option>
+        <option value="dessert">Dessert</option>
+        <option value="main-course">Main Course</option>
+        <option value="salad">Salad</option>
+        <option value="sauce">Sauce</option>
+        <option value="side-dish">Side Dish</option>
+        <option value="soup">Soup</option>
+    </select>
+    <button type="submit" class="search-button">Search</button>
+    {% if request.GET.q %}
+        <a href="{% url 'home' %}" class="clear-search">Clear Search</a>
+    {% endif %}
+</form>
+{% if request.GET.q %}
+    <div class="recipes-list">
+        {% for recipe in recipes %}
+            <div class="recipe-item">
+                <a href="{% url 'recipe_detail' recipe.id %}">
+                    <img src="{{ recipe.image }}" alt="{{ recipe.title }}">
+                    <h3>{{ recipe.title }}</h3>
+                </a>
+            </div>
+        {% empty %}
+            <p>No recipes found.</p>
+        {% endfor %}
+    </div>
+{% endif %}
 {% endblock content %}
