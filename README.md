@@ -3,7 +3,7 @@
 🧾 Overview
 Healthy Recipe & Meal Planner is a Django-based web application designed to help users plan nutritious meals and discover healthy recipes. It promotes balanced eating habits through a user-friendly interface for meal planning and recipe exploration.
 
-🚀 Features
+## 🚀 Features
 🔍 Recipe Search – Find recipes based on ingredients, dietary preferences, and meal types.
 
 👤 User Accounts – Register and log in to save your favorite recipes and meal plans.
@@ -21,7 +21,11 @@ Frontend: HTML, CSS
 
 Dependency Management: Poetry
 
-📦 Installation
+## 📦 Installation
+
+First you need to get an api key from [Spoonacular](https://spoonacular.com/food-api) and save it to a file in base directory called api_key_file
+
+Then you need to download the packages:
 To get started with the project locally:
 
 Clone the repository
@@ -58,7 +62,7 @@ Run the development server
 poetry run python manage.py runserver
 ```
 
-💡 Usage
+## 💡 Usage
 Once the server is running:
 
 🔎 Use the search bar to discover healthy recipes.
