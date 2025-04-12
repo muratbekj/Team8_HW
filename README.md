@@ -92,9 +92,3 @@ poetry run python manage.py shell
 poetry run python manage.py collectstatic
 ```
 ```
-
-### Summary of Changes:
-- **Added a Heading**: "## Terminal Commands" to introduce the new section.
-- **Included Terminal Commands**: Provided a list of useful terminal commands for managing the Django application.
-
-Feel free to adjust the commands or add more as needed! Let me know if you need any further modifications or assistance!
