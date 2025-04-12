@@ -2,8 +2,10 @@ import requests
 import os
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import ListView, TemplateView, DetailView
+from django.views import View
+from django.http import JsonResponse
 from django.db.models import Q
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Recipe
 from urllib.parse import urlencode
 # User Profile View to display user details
@@ -18,6 +20,10 @@ class UserProfileView(LoginRequiredMixin, TemplateView):
 # Dashboard View
 class DashboardView(LoginRequiredMixin, TemplateView):
     template_name = 'main/dashboard.html'
+    context_object_name = 'saved_recipes'
+
+    def get_queryset(self):
+        return Recipe.objects.filter(created_by=self.request.user)
 
 
 class HomeView(ListView):
@@ -72,11 +78,12 @@ class RecipeDetailView(DetailView):
 
         url = f'https://api.spoonacular.com/recipes/{recipe_id}/information'
         params = {'apiKey': api_key}
-
+        
         response = requests.get(url, params=params)
 
         if response.status_code == 200:
             recipe = response.json()
+            print(recipe)
         else:
             recipe = {}
 

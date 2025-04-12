@@ -1,8 +1,38 @@
 {% extends "base.html" %}
 {% block content %}
 
-<h2>{{ recipe.title }}</h2>
-<img src="{{ recipe.image }}" alt="{{ recipe.title }}">
-<p>{{ recipe.summary|safe }}</p>
+<h1>{{ recipe.title }}</h1>
+<img src="{{ recipe.image }}" alt="{{ recipe.title }}" style="max-width: 100%; height: auto;">
+
+<p><strong>Summary:</strong> {{ recipe.summary|safe }}</p>
+
+<p><strong>Servings:</strong> {{ recipe.servings }}</p>
+<p><strong>Ready In:</strong> {{ recipe.readyInMinutes }} minutes</p>
+<p><strong>Vegetarian:</strong> {{ recipe.vegetarian|yesno:"Yes,No" }}</p>
+<p><strong>Vegan:</strong> {{ recipe.vegan|yesno:"Yes,No" }}</p>
+<p><strong>Gluten Free:</strong> {{ recipe.glutenFree|yesno:"Yes,No" }}</p>
+<p><strong>Dairy Free:</strong> {{ recipe.dairyFree|yesno:"Yes,No" }}</p>
+<p><strong>Low FODMAP:</strong> {{ recipe.lowFodmap|yesno:"Yes,No" }}</p>
+<p><strong>Healthy:</strong> {{ recipe.veryHealthy|yesno:"Yes,No" }}</p>
+<p><strong>Cheap:</strong> {{ recipe.cheap|yesno:"Yes,No" }}</p>
+<p><strong>Popular:</strong> {{ recipe.veryPopular|yesno:"Yes,No" }}</p>
+<p><strong>Sustainable:</strong> {{ recipe.sustainable|yesno:"Yes,No" }}</p>
+
+<p><strong>Weight Watcher Smart Points:</strong> {{ recipe.weightWatcherSmartPoints }}</p>
+<p><strong>Health Score:</strong> {{ recipe.healthScore }}%</p>
+
+<p><strong>Source:</strong> <a href="{{ recipe.sourceUrl }}" target="_blank">{{ recipe.sourceName }}</a></p>
+
+<h3>Ingredients:</h3>
+<ul>
+  {% for ingredient in recipe.extendedIngredients %}
+    <li>{{ ingredient.original }}</li>
+  {% endfor %}
+</ul>
+
+{% if recipe.instructions %}
+<h3>Instructions:</h3>
+{{ recipe.instructions|safe }}
+{% endif %}
 
 {% endblock content %}
