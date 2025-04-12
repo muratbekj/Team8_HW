@@ -77,7 +77,6 @@ class RecipeDetailView(DetailView):
         api_key = open('api_key_file', 'r').read()
 
         url = f'https://api.spoonacular.com/recipes/{recipe_id}/information'
-        instructions = f'https://api.spoonacular.com/recipes/{recipe_id}/analyzedInstructions'
         params = {'apiKey': api_key}
         
         response = requests.get(url, params=params)
@@ -99,7 +98,6 @@ class SaveRecipeView(LoginRequiredMixin, View):
 
         if response.status_code == 200:
             data = response.json()
-            # Extract data and save it to your model
             recipe = Recipe.objects.create(
                 title=data['title'],
                 cuisine=data.get('cuisines', [''])[0],
@@ -107,15 +105,15 @@ class SaveRecipeView(LoginRequiredMixin, View):
                 ingredients='\n'.join([ing['original'] for ing in data.get('extendedIngredients', [])]),
                 instructions=data.get('instructions', ''),
                 image_url=data.get('image', ''),
-                prep_time=0,  # If not provided, default to 0
+                prep_time=0,
                 cook_time=data.get('readyInMinutes', 0),
-                calories=0,  # You can compute this if you fetch nutrition data
+                calories=0,
                 protein=None,
                 carbs=None,
                 fat=None,
                 source_url=data.get('sourceUrl', ''),
                 created_by=request.user
             )
-            return JsonResponse({'success': True, 'recipe_id': recipe.id})
+            return redirect('dashboard')
         else:
             return JsonResponse({'success': False, 'error': 'Failed to fetch recipe'})

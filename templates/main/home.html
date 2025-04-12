@@ -28,8 +28,13 @@
         {% endif %}
     </div>
 {% else %}
-    <h1>You are not logged in.. Please signup or register:</h1>
-    <a href="{% url 'login' %}">Login</a>
-    <a href="{% url 'signup' %}">Register</a>
+    <div class="unauthenticated-container">
+        <h1 class="unauthenticated-title">You are not logged in..</h1>
+        <p class="unauthenticated-message">Please signup or register:</p>
+        <div class="unauthenticated-links">
+            <a href="{% url 'login' %}" class="unauthenticated-link">Login</a>
+            <a href="{% url 'signup' %}" class="unauthenticated-link">Register</a>
+        </div>
+    </div>
 {% endif %}
 {% endblock content %}
