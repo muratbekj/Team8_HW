@@ -1,49 +1,100 @@
 # Healthy Recipe & Meal Planner
 
-## Overview
-The Healthy Recipe & Meal Planner is a web application designed to help users plan their meals and discover healthy recipes. It aims to promote healthy eating habits by providing a user-friendly interface for meal planning and recipe exploration.
+🧾 Overview
+Healthy Recipe & Meal Planner is a Django-based web application designed to help users plan nutritious meals and discover healthy recipes. It promotes balanced eating habits through a user-friendly interface for meal planning, recipe exploration, and shopping list generation.
 
-## Features
-- **Recipe Search**: Find healthy recipes based on ingredients, dietary preferences, and meal types.
-- **Meal Planning**: Create and manage weekly meal plans with ease.
-- **Shopping List**: Automatically generate shopping lists based on selected recipes.
-- **User Accounts**: Save favorite recipes and meal plans by creating an account.
-- **Nutritional Information**: View detailed nutritional information for each recipe.
+🚀 Features
+🔍 Recipe Search – Find recipes based on ingredients, dietary preferences, and meal types.
 
-## Technologies Used
-- **Framework**: Django
-- **Database**: SQLite3
-- **Dependency Management**: Poetry
+👤 User Accounts – Register and log in to save your favorite recipes and meal plans.
 
-## Installation
-To get started with the Healthy Recipe & Meal Planner, follow these steps:
+🧪 Nutritional Information – View detailed nutrition facts for every recipe.
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/muratbekj/Team8_HW.git
-   ```
-2. Navigate to the project directory:
-   ```bash
-   cd Team8_HW
-   ```
-3. Install Poetry
+❤️ Save Recipes – Bookmark recipes to revisit later on your personal dashboard.
 
-4. Install the dependencies:
-   ```bash
-   poetry install
-   ```
-5. Run database migrations:
-   ```bash
-   poetry run python manage.py migrate
-   ```
-6. Start the application:
-   ```bash
-   poetry run python manage.py runserver
-   ```
+🛠️ Technologies Used
+Framework: Django
 
-## Usage
-Once the application is running, you can:
-- Search for recipes using the search bar.
-- Add recipes to your meal plan by clicking on the "Add to Meal Plan" button.
-- View your meal plan and shopping list in the respective sections.
+Database: SQLite3 (default for development)
 
+Frontend: HTML, CSS
+
+Dependency Management: Poetry
+
+📦 Installation
+To get started with the project locally:
+
+Clone the repository
+
+```bash
+git clone https://github.com/muratbekj/Team8_HW.git
+cd Team8_HW
+```
+
+Install Poetry
+If you haven't already, install Poetry from https://python-poetry.org/docs/#installation.
+
+Install dependencies
+
+```bash
+poetry install
+```
+
+Apply database migrations
+
+```bash
+poetry run python manage.py migrate
+```
+
+Create a superuser (optional, for admin access)
+
+```bash
+poetry run python manage.py createsuperuser
+```
+
+Run the development server
+
+```bash
+poetry run python manage.py runserver
+```
+
+💡 Usage
+Once the server is running:
+
+🔎 Use the search bar to discover healthy recipes.
+
+➕ Click "Add to Meal Plan" to include a recipe in your weekly plan.
+
+📋 View and manage your meal plan and shopping list.
+
+❤️ Save recipes and view them on your dashboard.
+
+---
+
+## Terminal Commands
+
+Here are some useful terminal commands for managing your Django application:
+
+```bash
+# Start the development server
+poetry run python manage.py runserver
+
+# Apply migrations
+poetry run python manage.py migrate
+
+# Create a superuser
+poetry run python manage.py createsuperuser
+
+# Open the Django shell
+poetry run python manage.py shell
+
+# Collect static files
+poetry run python manage.py collectstatic
+```
+```
+
+### Summary of Changes:
+- **Added a Heading**: "## Terminal Commands" to introduce the new section.
+- **Included Terminal Commands**: Provided a list of useful terminal commands for managing the Django application.
+
+Feel free to adjust the commands or add more as needed! Let me know if you need any further modifications or assistance!

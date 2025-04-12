@@ -50,4 +50,11 @@
     {% endif %}
 </div>
 
+<div class="save-recipe-container">
+    <form action="{% url 'save_recipe' recipe.id %}" method="post" class="save-recipe-form">
+        {% csrf_token %}
+        <button type="submit" class="form-button">Save Recipe</button>
+    </form>
+</div>
+
 {% endblock content %}

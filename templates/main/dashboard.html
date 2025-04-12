@@ -1,26 +1,31 @@
 {% extends "base.html" %}
 {% block content %}
 
-
-
 {% if user.is_authenticated %}
-<h1>Welcome to the Dashboard, {{ user.username }}!</h1>
-<p>Here you can view and manage your meal plans and recipes.</p>
-<h2>Your Saved Recipes</h2>
-<ul>
-  {% for recipe in recipes %}
-    <li>
-      <a href="{% url 'recipe_detail' recipe.id %}">{{ recipe.title }}</a>
-    </li>
-  {% empty %}
-    <li>You haven’t saved any recipes yet.</li>
-  {% endfor %}
-</ul>
-<a href="{% url 'user_profile' %}">Go to Profile</a>
-<a href="{% url 'logout' %}">Logout</a>
-{% else %}
-    <a href="{% url 'login' %}">Login</a>
-{% endif %}
+<h1 class="dashboard-title">Welcome to the Dashboard, {{ user.username }}!</h1>
+<p class="dashboard-intro">Here you can view and manage your meal plans and recipes.</p>
 
+<h2 class="saved-recipes-title">Saved Recipes</h2>
+<ul class="saved-recipes-list">
+    {% for recipe in saved_recipes %}
+        <li class="recipe-item">
+            <h3 class="recipe-title">{{ recipe.title }}</h3>
+            <img src="{{ recipe.image_url }}" alt="{{ recipe.title }}" class="recipe-image">
+            <p class="recipe-description">{{ recipe.description|safe }}</p>
+            <a href="{{ recipe.source_url }}" target="_blank" class="view-recipe-button">View full recipe</a>
+        </li>
+    {% empty %}
+        <li class="no-recipes">No recipes saved yet.</li>
+    {% endfor %}
+</ul>
+
+<div class="dashboard-links">
+    <a href="{% url 'user_profile' %}" class="dashboard-link">Go to Profile</a>
+    <a href="{% url 'logout' %}" class="dashboard-link logout-button">Logout</a>
+</div>
+
+{% else %}
+    <a href="{% url 'login' %}" class="login-link">Login</a>
+{% endif %}
 
 {% endblock content %}

@@ -8,6 +8,7 @@ from django.db.models import Q
 from django.shortcuts import render, redirect
 from .models import Recipe
 from urllib.parse import urlencode
+from django.contrib import messages
 # User Profile View to display user details
 class UserProfileView(LoginRequiredMixin, TemplateView):
     template_name = 'main/user_profile.html'
@@ -20,10 +21,11 @@ class UserProfileView(LoginRequiredMixin, TemplateView):
 # Dashboard View
 class DashboardView(LoginRequiredMixin, TemplateView):
     template_name = 'main/dashboard.html'
-    context_object_name = 'saved_recipes'
 
-    def get_queryset(self):
-        return Recipe.objects.filter(created_by=self.request.user)
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['saved_recipes'] = Recipe.objects.filter(created_by=self.request.user)
+        return context
 
 
 class HomeView(ListView):
@@ -87,3 +89,33 @@ class RecipeDetailView(DetailView):
             recipe = {}
 
         return render(request, self.template_name, {'recipe': recipe})
+
+class SaveRecipeView(LoginRequiredMixin, View):
+    def post(self, request, pk, *args, **kwargs):
+        api_key = open('api_key_file', 'r').read()
+        url = f'https://api.spoonacular.com/recipes/{pk}/information'
+        params = {'apiKey': api_key}
+        response = requests.get(url, params=params)
+
+        if response.status_code == 200:
+            data = response.json()
+            # Extract data and save it to your model
+            recipe = Recipe.objects.create(
+                title=data['title'],
+                cuisine=data.get('cuisines', [''])[0],
+                description=data.get('summary', ''),
+                ingredients='\n'.join([ing['original'] for ing in data.get('extendedIngredients', [])]),
+                instructions=data.get('instructions', ''),
+                image_url=data.get('image', ''),
+                prep_time=0,  # If not provided, default to 0
+                cook_time=data.get('readyInMinutes', 0),
+                calories=0,  # You can compute this if you fetch nutrition data
+                protein=None,
+                carbs=None,
+                fat=None,
+                source_url=data.get('sourceUrl', ''),
+                created_by=request.user
+            )
+            return JsonResponse({'success': True, 'recipe_id': recipe.id})
+        else:
+            return JsonResponse({'success': False, 'error': 'Failed to fetch recipe'})

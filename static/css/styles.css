@@ -313,3 +313,137 @@ nav a {
     background-color: #e74c3c; /* Same background as other buttons */
     margin-top: 10px; /* Space above the delete button */
 }
+
+.save-recipe-container {
+    display: flex; /* Use flexbox for centering */
+    justify-content: center; /* Center horizontally */
+    margin-top: 20px; /* Space above the form */
+}
+
+.save-recipe-form {
+    display: flex; /* Use flexbox for layout */
+    flex-direction: column; /* Stack elements vertically */
+    align-items: center; /* Center items horizontally */
+}
+
+.form-button {
+    background-color: #e74c3c; /* Button background color */
+    color: white; /* Button text color */
+    border: none; /* Remove border */
+    padding: 10px 15px; /* Padding for the button */
+    border-radius: 4px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s; /* Smooth transition for hover effect */
+    width: 100%; /* Full width for the button */
+    max-width: 200px; /* Limit the maximum width */
+}
+
+.form-button:hover {
+    background-color: #c0392b; /* Darker red on hover */
+}
+
+.dashboard-title {
+    text-align: center; /* Center the title */
+    color: #2c3e50; /* Dark color for the title */
+    margin-top: 20px; /* Space above the title */
+}
+
+.dashboard-intro {
+    text-align: center; /* Center the introduction text */
+    margin-bottom: 20px; /* Space below the introduction */
+    font-size: 1.2em; /* Slightly larger font size */
+}
+
+.saved-recipes-title {
+    text-align: center; /* Center the saved recipes title */
+    margin-top: 30px; /* Space above the title */
+    font-size: 1.5em; /* Larger font size for emphasis */
+    color: #333; /* Dark color for the title */
+}
+
+.saved-recipes-list {
+    list-style-type: none; /* Remove default list styling */
+    padding: 0; /* Remove padding */
+    max-width: 800px; /* Limit the width of the list */
+    margin: 0 auto; /* Center the list */
+}
+
+.recipe-item {
+    background: #fff; /* White background for each recipe item */
+    border: 1px solid #ccc; /* Light gray border */
+    border-radius: 8px; /* Rounded corners */
+    padding: 15px; /* Padding inside each item */
+    margin: 10px 0; /* Space between items */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.recipe-title {
+    margin: 0; /* Remove default margin */
+    font-size: 1.5em; /* Larger font size for recipe title */
+}
+
+.recipe-image {
+    max-width: 100%; /* Set image to full width of the item */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 4px; /* Rounded corners for images */
+    margin: 10px 0; /* Space above and below the image */
+}
+
+.recipe-description {
+    margin: 10px 0; /* Space above and below the description */
+}
+
+.view-recipe-button {
+    display: inline-block; /* Make it behave like a button */
+    background-color: #e74c3c; /* Button background color */
+    color: white; /* Button text color */
+    padding: 10px 15px; /* Padding for the button */
+    border-radius: 4px; /* Rounded corners */
+    text-decoration: none; /* Remove underline */
+    transition: background-color 0.3s; /* Smooth transition for hover effect */
+}
+
+.view-recipe-button:hover {
+    background-color: #c0392b; /* Darker red on hover */
+}
+
+.no-recipes {
+    text-align: center; /* Center the no recipes message */
+    font-style: italic; /* Italicize the text */
+    color: #777; /* Gray color for the message */
+}
+
+.dashboard-links {
+    text-align: center; /* Center the links */
+    margin-top: 20px; /* Space above the links */
+}
+
+.dashboard-link {
+    display: inline-block; /* Make it behave like a button */
+    background-color: #e74c3c; /* Button background color */
+    color: white; /* Button text color */
+    padding: 10px 15px; /* Padding for the button */
+    border-radius: 4px; /* Rounded corners */
+    text-decoration: none; /* Remove underline */
+    margin: 0 10px; /* Space between links */
+    transition: background-color 0.3s; /* Smooth transition for hover effect */
+}
+
+.dashboard-link:hover {
+    background-color: #c0392b; /* Darker red on hover */
+}
+
+.login-link {
+    display: inline-block; /* Make it behave like a button */
+    background-color: #e74c3c; /* Button background color */
+    color: white; /* Button text color */
+    padding: 10px 15px; /* Padding for the button */
+    border-radius: 4px; /* Rounded corners */
+    text-decoration: none; /* Remove underline */
+    margin: 20px auto; /* Center the link */
+    transition: background-color 0.3s; /* Smooth transition for hover effect */
+}
+
+.login-link:hover {
+    background-color: #c0392b; /* Darker red on hover */
+}
