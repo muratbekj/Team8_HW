@@ -91,4 +91,3 @@ poetry run python manage.py shell
 # Collect static files
 poetry run python manage.py collectstatic
 ```
-```
